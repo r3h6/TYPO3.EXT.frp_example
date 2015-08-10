@@ -214,7 +214,7 @@
             {
                 "actions": {
                     "controllerActionCombinations": "Item=>list,show,new,create",
-                    "noncacheableActions": "Item=>new,create",
+                    "noncacheableActions": "Item=>list,new,create",
                     "switchableActions": "List\nItem->list"
                 },
                 "key": "pi1",
@@ -250,7 +250,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-08-10 09:00",
+        "last_modified": "2015-08-10 09:51",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

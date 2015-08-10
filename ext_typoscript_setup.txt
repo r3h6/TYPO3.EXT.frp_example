@@ -6,16 +6,16 @@ config.tx_extbase{
             TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
                 subclasses {
                     Tx_FrpExample_User = Frappant\FrpExample\Domain\Model\User
-					
+
           		}
             }
             Frappant\FrpExample\Domain\Model\User {
                 mapping {
                     tableName = fe_users
-                    recordType = Tx_FrpExample_User
+                    #recordType = Tx_FrpExample_User
                 }
             }
-            
+
     	}
     }
 }

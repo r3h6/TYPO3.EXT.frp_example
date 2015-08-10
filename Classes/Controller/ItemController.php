@@ -1,6 +1,8 @@
 <?php
 namespace Frappant\FrpExample\Controller;
 
+use Frappant\FrpExample\Domain\Model\Dto\ItemDemand;
+
 /***************************************************************
  *
  *  Copyright notice
@@ -25,7 +27,7 @@ namespace Frappant\FrpExample\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use \Frappant\FrpExample\Domain\Model\Dto\ItemDemand;
+
 /**
  * ItemController
  */
@@ -35,10 +37,11 @@ class ItemController extends ActionController {
 
 	/**
 	 * [$setup description]
+	 *
 	 * @var Frappant\FrpExample\Configuration\Setup
 	 * @inject
 	 */
-	protected $setup;
+	protected $setup = NULL;
 
 	/**
 	 * itemRepository
@@ -50,30 +53,32 @@ class ItemController extends ActionController {
 
 	/**
 	 * [initializeAction description]
+	 *
 	 * @return void
 	 */
 	public function initializeAction() {
 		parent::initializeAction();
 		$this->data = $this->configurationManager->getContentObject()->data;
-		$this->isAjax = (isset($this->setup['ajaxPageType']) && $this->setup['ajaxPageType'] === GeneralUtility::_GP('type'));
+		$this->isAjax = isset($this->setup['ajaxPageType']) && $this->setup['ajaxPageType'] === GeneralUtility::_GP('type');
 	}
 
 	/**
 	 * [initializeView description]
-	 * @param  \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view [description]
+	 *
+	 * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view [description]
 	 * @return void
 	 */
-	public function initializeView (\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view){
-		$view->assign('layout', $this->isAjax ? 'Ajax': 'Default');
+	public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view) {
+		$view->assign('layout', $this->isAjax ? 'Ajax' : 'Default');
 		$view->assign('setup', $this->setup);
 		$view->assign('data', $this->data);
 	}
 
-	public function initializeListAction (){
-		if (!$this->request->hasArgument(self::ARGUMENT_DEMAND)){
+	public function initializeListAction() {
+		if (!$this->request->hasArgument(self::ARGUMENT_DEMAND)) {
 			/** @var \Frappant\FrpExample\Domain\Model\Dto\ItemDemand */
 			$itemDemand = ItemDemand::factory($this->setup->get('list.demand', array()));
-			$this->request->setArgument(self::ARGUMENT_DEMAND, $itemDemand); // Doesn't get validated!
+			$this->request->setArgument(self::ARGUMENT_DEMAND, $itemDemand);
 		}
 	}
 
