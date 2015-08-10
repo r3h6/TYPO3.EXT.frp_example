@@ -131,19 +131,11 @@ $GLOBALS['TCA']['tx_frpexample_domain_model_item'] = array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:frp_example/Resources/Private/Language/locallang_db.xlf:tx_frpexample_domain_model_item.user',
 			'config' => array(
-				'type' => 'inline',
+				'type' => 'select',
 				'foreign_table' => 'fe_users',
-				'foreign_field' => 'item',
-				'maxitems'      => 9999,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
+				'minitems' => 0,
+				'maxitems' => 1,
 			),
-
 		),
 		
 	),

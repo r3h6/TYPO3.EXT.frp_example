@@ -123,9 +123,8 @@ class ItemTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function getUserReturnsInitialValueForUser() {
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
-			$newObjectStorage,
+			NULL,
 			$this->subject->getUser()
 		);
 	}
@@ -133,41 +132,14 @@ class ItemTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function setUserForObjectStorageContainingUserSetsUser() {
-		$user = new \Frappant\FrpExample\Domain\Model\User();
-		$objectStorageHoldingExactlyOneUser = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$objectStorageHoldingExactlyOneUser->attach($user);
-		$this->subject->setUser($objectStorageHoldingExactlyOneUser);
+	public function setUserForUserSetsUser() {
+		$userFixture = new \Frappant\FrpExample\Domain\Model\User();
+		$this->subject->setUser($userFixture);
 
 		$this->assertAttributeEquals(
-			$objectStorageHoldingExactlyOneUser,
+			$userFixture,
 			'user',
 			$this->subject
 		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function addUserToObjectStorageHoldingUser() {
-		$user = new \Frappant\FrpExample\Domain\Model\User();
-		$userObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$userObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($user));
-		$this->inject($this->subject, 'user', $userObjectStorageMock);
-
-		$this->subject->addUser($user);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removeUserFromObjectStorageHoldingUser() {
-		$user = new \Frappant\FrpExample\Domain\Model\User();
-		$userObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
-		$userObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($user));
-		$this->inject($this->subject, 'user', $userObjectStorageMock);
-
-		$this->subject->removeUser($user);
-
 	}
 }

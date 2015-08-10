@@ -55,8 +55,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * user
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Frappant\FrpExample\Domain\Model\User>
-	 * @cascade remove
+	 * @var \Frappant\FrpExample\Domain\Model\User
 	 */
 	protected $user = NULL;
 
@@ -77,7 +76,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->user = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		
 	}
 
 	/**
@@ -138,29 +137,9 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a User
-	 *
-	 * @param \Frappant\FrpExample\Domain\Model\User $user
-	 * @return void
-	 */
-	public function addUser(\Frappant\FrpExample\Domain\Model\User $user) {
-		$this->user->attach($user);
-	}
-
-	/**
-	 * Removes a User
-	 *
-	 * @param \Frappant\FrpExample\Domain\Model\User $userToRemove The User to be removed
-	 * @return void
-	 */
-	public function removeUser(\Frappant\FrpExample\Domain\Model\User $userToRemove) {
-		$this->user->detach($userToRemove);
-	}
-
-	/**
 	 * Returns the user
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Frappant\FrpExample\Domain\Model\User> $user
+	 * @return \Frappant\FrpExample\Domain\Model\User $user
 	 */
 	public function getUser() {
 		return $this->user;
@@ -169,10 +148,10 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the user
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Frappant\FrpExample\Domain\Model\User> $user
+	 * @param \Frappant\FrpExample\Domain\Model\User $user
 	 * @return void
 	 */
-	public function setUser(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $user) {
+	public function setUser(\Frappant\FrpExample\Domain\Model\User $user) {
 		$this->user = $user;
 	}
 

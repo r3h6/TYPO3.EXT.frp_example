@@ -75,7 +75,7 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "user",
-                            "relationType": "zeroToMany",
+                            "relationType": "manyToOne",
                             "relationWire": "[wired]",
                             "uid": "682790070183"
                         }
@@ -250,7 +250,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-08-10 08:55",
+        "last_modified": "2015-08-10 09:00",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }
