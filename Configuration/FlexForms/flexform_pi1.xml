@@ -1,4 +1,8 @@
 <T3DataStructure>
+	<!-- DISABLE LANGUAGE -->
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
 	<sheets>
 		<sDEF>
 			<ROOT>
@@ -7,7 +11,7 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<switchableControllerActions>
+<!-- 					<switchableControllerActions>
 						<TCEforms>
 							<label>Select function</label>
 							<config>
@@ -20,7 +24,16 @@
 								</items>
 							</config>
 						</TCEforms>
-					</switchableControllerActions>
+					</switchableControllerActions> -->
+					<settings.flexform.demand.limit>
+						<TCEforms>
+							<label>Limit</label>
+							<config>
+								<type>input</type>
+								<eval>number</eval>
+							</config>
+						</TCEforms>
+					</settings.flexform.demand.limit>
 				</el>
 			</ROOT>
 		</sDEF>
