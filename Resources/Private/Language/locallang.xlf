@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-10T20:32:05Z" product-name="frp_example">
+		<header/>
+		<body>
+			<trans-unit id="tx_frpexample_domain_model_item">
+				<source>Item</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_item.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_item.production_date">
+				<source>Production Date</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_item.groups">
+				<source>Groups</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_item.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_group">
+				<source>Group</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_group.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_user">
+				<source>User</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
