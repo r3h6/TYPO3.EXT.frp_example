@@ -44,12 +44,14 @@ class ItemRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 		$constraints = array();
 		if ($itemDemand->getTitle()){
-			$constraints[] = $query->like('title', '%' . $itemDemand->getTitle() . '%')
+			$constraints[] = $query->like('title', '%' . $itemDemand->getTitle() . '%');
 		}
 
-		$query->matching(
-			$query->logicalAnd($constraints)
-		);
+		if (!empty($constraints)){
+			$query->matching(
+				$query->logicalAnd($constraints)
+			);
+		}
 
 		if ($itemDemand->getLimit()){
 			$query->setLimit($itemDemand->getLimit());

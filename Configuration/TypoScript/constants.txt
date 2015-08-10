@@ -12,4 +12,8 @@ plugin.tx_frpexample {
 		# cat=plugin.tx_frpexample//a; type=string; label=Default storage PID
 		storagePid =
 	}
+	settings {
+		jsonPageType = 1439237879
+		ajaxPageType = 1439237900
+	}
 }

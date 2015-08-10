@@ -4,6 +4,11 @@ plugin.tx_frpexample {
 		templateRootPath = {$plugin.tx_frpexample.view.templateRootPath}
 		partialRootPath = {$plugin.tx_frpexample.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_frpexample.view.layoutRootPath}
+
+		# Not working???
+		formatToPageTypeMapping {
+			json = {$plugin.tx_frpexample.settings.jsonPageType}
+		}
 	}
 	persistence {
 		storagePid = {$plugin.tx_frpexample.persistence.storagePid}
@@ -12,38 +17,60 @@ plugin.tx_frpexample {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
 	}
+	settings {
+		setup {
+			jsonPageType = {$plugin.tx_frpexample.settings.jsonPageType}
+			ajaxPageType = {$plugin.tx_frpexample.settings.ajaxPageType}
+			list {
+				pagination {
+					itemsPerPage = 3
+					insertAbove = 1
+					insertBelow = 0
+					maximumNumberOfLinks = 10
+				}
+			}
+		}
+	}
 }
 
-plugin.tx_frpexample._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
+tx_frpexample_ajax = PAGE
+tx_frpexample_ajax {
+	typeNum = {$plugin.tx_frpexample.settings.ajaxPageType}
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		disablePrefixComment = 1
+		debug = 0
 	}
-
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
+	10 = RECORDS
+	10 {
+		source.data = GP:recordUid
+		source.intval = 1
+		tables = tt_content
+		dontCheckPid = 1
+		conf.tt_content < tt_content.list.20.frpexample_pi1
 	}
+}
 
-	.tx-frp-example table {
-		border-collapse:separate;
-		border-spacing:10px;
+tx_frpexample_json = PAGE
+tx_frpexample_json {
+	typeNum = {$plugin.tx_frpexample.settings.jsonPageType}
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		disablePrefixComment = 1
+		debug = 0
+		additionalHeaders = Content-type:application/json
 	}
-
-	.tx-frp-example table th {
-		font-weight:bold;
+	10 = RECORDS
+	10 {
+		source.data = GP:recordUid
+		source.intval = 1
+		tables = tt_content
+		dontCheckPid = 1
+		conf.tt_content < tt_content.list.20.frpexample_pi1
 	}
+}
 
-	.tx-frp-example table td {
-		vertical-align:top;
-	}
-
-	.typo3-messages .message-error {
-		color:red;
-	}
-
-	.typo3-messages .message-ok {
-		color:green;
-	}
-
-)
