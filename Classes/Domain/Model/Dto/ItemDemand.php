@@ -25,7 +25,7 @@ namespace Frappant\FrpExample\Domain\Model\Dto;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * ItemDemand
  */
@@ -35,21 +35,26 @@ class ItemDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Title
 	 *
 	 * @var string
+	 * @validate Alphanumeric
 	 */
 	protected $title = '';
-
-	/**
-	 * Production date
-	 *
-	 * @var \DateTime
-	 */
-	protected $productionDate = NULL;
 
 	/**
 	 * [$limit description]
 	 * @var integer
 	 */
 	protected $limit = 0;
+
+	/**
+	 * [factory description]
+	 * @param  array  $demandProperties [description]
+	 * @return Frappant\FrpExample\Domain\Model\Dto\ItemDemand
+	 */
+	public static function factory (array $demandProperties){
+		$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+		$itemDemand = $propertyMapper->convert($demandProperties, 'Frappant\\FrpExample\\Domain\\Model\\Dto\\ItemDemand');
+		return $itemDemand;
+	}
 
 	/**
 	 * Returns the title
@@ -68,25 +73,6 @@ class ItemDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setTitle($title) {
 		$this->title = $title;
-	}
-
-	/**
-	 * Returns the productionDate
-	 *
-	 * @return \DateTime $productionDate
-	 */
-	public function getProductionDate() {
-		return $this->productionDate;
-	}
-
-	/**
-	 * Sets the productionDate
-	 *
-	 * @param \DateTime $productionDate
-	 * @return void
-	 */
-	public function setProductionDate(\DateTime $productionDate) {
-		$this->productionDate = $productionDate;
 	}
 
 	/**

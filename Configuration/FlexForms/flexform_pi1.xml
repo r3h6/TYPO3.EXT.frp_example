@@ -25,15 +25,15 @@
 							</config>
 						</TCEforms>
 					</switchableControllerActions> -->
-					<settings.flexform.demand.limit>
+					<settings.flexform.list.demand.limit>
 						<TCEforms>
 							<label>Limit</label>
 							<config>
 								<type>input</type>
-								<eval>number</eval>
+								<eval>int</eval>
 							</config>
 						</TCEforms>
-					</settings.flexform.demand.limit>
+					</settings.flexform.list.demand.limit>
 				</el>
 			</ROOT>
 		</sDEF>

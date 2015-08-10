@@ -31,5 +31,30 @@ namespace Frappant\FrpExample\Domain\Repository;
  */
 class ItemRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	
+	/**
+	 * [findDemanded description]
+	 * @param  \Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand [description]
+	 * @return [type]                                                       [description]
+	 */
+	public function findDemanded (\Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand){
+
+		$query = $this->createQuery();
+
+		// $querySettings = $query->getQuerySettings();
+
+		$constraints = array();
+		if ($itemDemand->getTitle()){
+			$constraints[] = $query->like('title', '%' . $itemDemand->getTitle() . '%')
+		}
+
+		$query->matching(
+			$query->logicalAnd($constraints)
+		);
+
+		if ($itemDemand->getLimit()){
+			$query->setLimit($itemDemand->getLimit());
+		}
+
+		return $query->execute();
+	}
 }

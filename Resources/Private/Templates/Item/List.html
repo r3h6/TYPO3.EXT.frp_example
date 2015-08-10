@@ -17,6 +17,14 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:flashMessages renderMode="div" />
 
+<f:form action="list" name="itemDemand" object="{itemDemand}">
+	<div>
+		<label>Title</label> <f:form.textfield property="title" />
+	</div>
+	<f:form.hidden property="limit" />
+	<button type="submit">Submit</button>
+</f:form>
+
 <table  class="tx_frpexample" >
 	<tr>
 		<th><f:translate key="tx_frpexample_domain_model_item.title" /></th>

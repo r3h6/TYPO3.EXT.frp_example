@@ -6,4 +6,5 @@
 <label for="productionDate">
 	<f:translate key="tx_frpexample_domain_model_item.production_date" />
 </label><br />
-	<f:form.textfield property="productionDate"  value="{item.productionDate->f:format.date()}" /><br />
+	<f:form.hidden property="productionDate.dateFormat" value="d.m.Y" />
+	<f:form.textfield property="productionDate.date" value="{item.productionDate->f:format.date()}" placeholder="dd.mm.yyyy" /><br />
