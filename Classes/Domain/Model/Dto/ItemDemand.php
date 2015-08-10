@@ -46,6 +46,12 @@ class ItemDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $limit = 0;
 
 	/**
+	 * [$group description]
+	 * @var integer
+	 */
+	protected $group = 0;
+
+	/**
 	 * [factory description]
 	 * @param  array  $demandProperties [description]
 	 * @return Frappant\FrpExample\Domain\Model\Dto\ItemDemand
@@ -91,5 +97,25 @@ class ItemDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setLimit($limit){
 		$this->limit = $limit;
+	}
+
+	/**
+	 * Returns the group
+	 *
+	 * @return int $group
+	 */
+	public function getGroup(){
+		return $this->group;
+	}
+
+	/**
+	 * Sets the group
+	 *
+	 * @param int $group
+	 * @return object $this
+	 */
+	public function setGroup($group){
+		$this->group = $group;
+		return $this;
 	}
 }

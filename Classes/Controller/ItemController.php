@@ -92,6 +92,7 @@ class ItemController extends ActionController {
 	public function listAction(\Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand) {
 		$items = $this->itemRepository->findDemanded($itemDemand);
 		$this->view->assign('items', $items);
+		$this->view->assign('itemDemand', $itemDemand);
 	}
 
 	/**

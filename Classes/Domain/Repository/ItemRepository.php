@@ -44,8 +44,12 @@ class ItemRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 		$constraints = array();
 		if ($itemDemand->getTitle()){
-			$constraints[] = $query->like('title', '%' . $itemDemand->getTitle() . '%');
+			$constraints[] = $this->createTitleConstraint($query, $itemDemand->getTitle());
 		}
+
+		// if ($itemDemand->getGroup()){
+		// 	$constraints[] = $query->contains('groups', $itemDemand->getGroup());
+		// }
 
 		if (!empty($constraints)){
 			$query->matching(
@@ -58,5 +62,12 @@ class ItemRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		}
 
 		return $query->execute();
+	}
+
+	protected function createTitleConstraint ($query, $title){
+		$constraints = array();
+		$constraints[] = $query->like('title', '%' . $title . '%');
+		//$constraints[] = $query->like('groups.title', '%' . $title . '%');
+		return $query->logicalOr($constraints);
 	}
 }
