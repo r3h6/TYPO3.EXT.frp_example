@@ -9,6 +9,10 @@ if (!defined('TYPO3_MODE')) {
 	'Example Item'
 );
 
+$pluginSignature = str_replace('_','',$_EXTKEY) . '_pi1';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_pi1.xml');
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Example');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_frpexample_domain_model_item', 'EXT:frp_example/Resources/Private/Language/locallang_csh_tx_frpexample_domain_model_item.xlf');

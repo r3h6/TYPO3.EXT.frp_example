@@ -201,7 +201,7 @@
         },
         "extensionKey": "frp_example",
         "name": "Example",
-        "originalExtensionKey": "",
+        "originalExtensionKey": "frp_example",
         "persons": [
             {
                 "company": "",
@@ -215,7 +215,7 @@
                 "actions": {
                     "controllerActionCombinations": "Item=>list,show,new,create",
                     "noncacheableActions": "Item=>new,create",
-                    "switchableActions": ""
+                    "switchableActions": "List\nItem->list"
                 },
                 "key": "pi1",
                 "name": "Example Item"
@@ -250,7 +250,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-08-10 08:48",
+        "last_modified": "2015-08-10 08:55",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

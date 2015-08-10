@@ -1,7 +1,6 @@
 <?php
 namespace Frappant\FrpExample\Domain\Repository;
 
-
 /***************************************************************
  *
  *  Copyright notice

@@ -42,9 +42,10 @@ class ItemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	/**
 	 * action list
 	 *
+	 * @param \Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand
 	 * @return void
 	 */
-	public function listAction() {
+	public function listAction(\Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand = NULL) {
 		$items = $this->itemRepository->findAll();
 		$this->view->assign('items', $items);
 	}
