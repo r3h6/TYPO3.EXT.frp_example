@@ -1,7 +1,6 @@
 <?php
 namespace Frappant\FrpExample\Controller;
 
-
 /***************************************************************
  *
  *  Copyright notice
@@ -31,6 +30,14 @@ namespace Frappant\FrpExample\Controller;
  * ItemController
  */
 class ItemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+	/**
+	 * itemRepository
+	 *
+	 * @var \Frappant\FrpExample\Domain\Repository\ItemRepository
+	 * @inject
+	 */
+	protected $itemRepository = NULL;
 
 	/**
 	 * action list

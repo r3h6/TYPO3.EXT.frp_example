@@ -1,5 +1,6 @@
 <?php
-namespace Frappant\FrpExample\Domain\Model;
+namespace Frappant\FrpExample\Domain\Repository;
+
 
 /***************************************************************
  *
@@ -27,34 +28,9 @@ namespace Frappant\FrpExample\Domain\Model;
  ***************************************************************/
 
 /**
- * Group
+ * The repository for Items
  */
-class Group extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class ItemRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	/**
-	 * Title
-	 *
-	 * @var string
-	 */
-	protected $title = '';
-
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
-
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
-
+	
 }

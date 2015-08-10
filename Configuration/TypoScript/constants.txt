@@ -1,0 +1,15 @@
+
+plugin.tx_frpexample {
+	view {
+		# cat=plugin.tx_frpexample/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:frp_example/Resources/Private/Templates/
+		# cat=plugin.tx_frpexample/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:frp_example/Resources/Private/Partials/
+		# cat=plugin.tx_frpexample/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:frp_example/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_frpexample//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

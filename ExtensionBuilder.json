@@ -24,7 +24,7 @@
                     "addDeletedField": true,
                     "addHiddenField": true,
                     "addStarttimeEndtimeFields": true,
-                    "aggregateRoot": false,
+                    "aggregateRoot": true,
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "",
@@ -211,7 +211,15 @@
             }
         ],
         "plugins": [
-
+            {
+                "actions": {
+                    "controllerActionCombinations": "Item=>list,show,new,create",
+                    "noncacheableActions": "Item=>new,create",
+                    "switchableActions": ""
+                },
+                "key": "pi1",
+                "name": "Example Item"
+            }
         ],
         "vendorName": "Frappant"
     },
@@ -242,7 +250,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-08-10 08:32",
+        "last_modified": "2015-08-10 08:48",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

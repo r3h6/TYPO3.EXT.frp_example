@@ -51,7 +51,7 @@ class ItemControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 		$allItems = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 
-		$itemRepository = $this->getMock('', array('findAll'), array(), '', FALSE);
+		$itemRepository = $this->getMock('Frappant\\FrpExample\\Domain\\Repository\\ItemRepository', array('findAll'), array(), '', FALSE);
 		$itemRepository->expects($this->once())->method('findAll')->will($this->returnValue($allItems));
 		$this->inject($this->subject, 'itemRepository', $itemRepository);
 
@@ -94,7 +94,7 @@ class ItemControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	public function createActionAddsTheGivenItemToItemRepository() {
 		$item = new \Frappant\FrpExample\Domain\Model\Item();
 
-		$itemRepository = $this->getMock('', array('add'), array(), '', FALSE);
+		$itemRepository = $this->getMock('Frappant\\FrpExample\\Domain\\Repository\\ItemRepository', array('add'), array(), '', FALSE);
 		$itemRepository->expects($this->once())->method('add')->with($item);
 		$this->inject($this->subject, 'itemRepository', $itemRepository);
 

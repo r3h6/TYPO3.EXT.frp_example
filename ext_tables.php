@@ -3,6 +3,12 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Pi1',
+	'Example Item'
+);
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Example');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_frpexample_domain_model_item', 'EXT:frp_example/Resources/Private/Language/locallang_csh_tx_frpexample_domain_model_item.xlf');
