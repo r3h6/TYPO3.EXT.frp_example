@@ -16,4 +16,12 @@
 		{item.productionDate -> f:format.date()}
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_frpexample_domain_model_item.image" />
+		</td>
+		<td>
+				<f:image src="{item.image.originalResource.publicUrl}" width="200"/>
+		</td>
+	</tr>
 </table>

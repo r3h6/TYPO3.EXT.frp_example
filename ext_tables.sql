@@ -8,6 +8,7 @@ CREATE TABLE tx_frpexample_domain_model_item (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	production_date int(11) DEFAULT '0' NOT NULL,
+	image int(11) unsigned NOT NULL default '0',
 	groups int(11) unsigned DEFAULT '0',
 	user int(11) unsigned DEFAULT '0',
 

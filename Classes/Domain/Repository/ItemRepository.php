@@ -32,42 +32,52 @@ namespace Frappant\FrpExample\Domain\Repository;
 class ItemRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	/**
+	 * @var array
+	 */
+	protected $defaultOrderings = array(
+		'title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+	);
+
+	/**
 	 * [findDemanded description]
-	 * @param  \Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand [description]
+	 *
+	 * @param \Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand [description]
 	 * @return [type]                                                       [description]
 	 */
-	public function findDemanded (\Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand){
+	public function findDemanded(\Frappant\FrpExample\Domain\Model\Dto\ItemDemand $itemDemand) {
 
+		/** @var TYPO3\CMS\Extbase\Persistence\Generic\Query $query */
 		$query = $this->createQuery();
 
 		// $querySettings = $query->getQuerySettings();
-
 		$constraints = array();
-		if ($itemDemand->getTitle()){
+		if ($itemDemand->getTitle()) {
 			$constraints[] = $this->createTitleConstraint($query, $itemDemand->getTitle());
 		}
-
 		// if ($itemDemand->getGroup()){
 		// 	$constraints[] = $query->contains('groups', $itemDemand->getGroup());
 		// }
-
-		if (!empty($constraints)){
+		if (!empty($constraints)) {
 			$query->matching(
 				$query->logicalAnd($constraints)
 			);
 		}
 
-		if ($itemDemand->getLimit()){
+		if ($itemDemand->getLimit()) {
 			$query->setLimit($itemDemand->getLimit());
 		}
-
 		return $query->execute();
 	}
 
-	protected function createTitleConstraint ($query, $title){
+	/**
+	 * @param $query
+	 * @param $title
+	 */
+	protected function createTitleConstraint($query, $title) {
 		$constraints = array();
 		$constraints[] = $query->like('title', '%' . $title . '%');
 		//$constraints[] = $query->like('groups.title', '%' . $title . '%');
 		return $query->logicalOr($constraints);
 	}
+
 }

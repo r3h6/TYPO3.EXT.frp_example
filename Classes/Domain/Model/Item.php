@@ -35,6 +35,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Title
 	 *
 	 * @var string
+	 * @validate NotEmpty
 	 */
 	protected $title = '';
 
@@ -42,6 +43,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Production date
 	 *
 	 * @var \DateTime
+	 * @validate NotEmpty
 	 */
 	protected $productionDate = NULL;
 
@@ -60,6 +62,13 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $user = NULL;
 
 	/**
+	 * image
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $image = NULL;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -76,7 +85,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		
+
 	}
 
 	/**
@@ -113,7 +122,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \DateTime $productionDate
 	 * @return void
 	 */
-	public function setProductionDate(\DateTime $productionDate) {
+	public function setProductionDate(\DateTime $productionDate = NULL) {
 		$this->productionDate = $productionDate;
 	}
 
@@ -153,6 +162,25 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setUser(\Frappant\FrpExample\Domain\Model\User $user) {
 		$this->user = $user;
+	}
+
+	/**
+	 * Returns the image
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+	 */
+	public function getImage() {
+		return $this->image;
+	}
+
+	/**
+	 * Sets the image
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+	 * @return void
+	 */
+	public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
+		$this->image = $image;
 	}
 
 }

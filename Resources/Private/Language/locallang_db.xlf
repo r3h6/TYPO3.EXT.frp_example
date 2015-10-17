@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-10T21:51:16Z" product-name="frp_example">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-09-21T13:50:16Z" product-name="frp_example">
 		<header/>
 		<body>
 			<trans-unit id="tx_frpexample_domain_model_item">
@@ -11,6 +11,9 @@
 			</trans-unit>
 			<trans-unit id="tx_frpexample_domain_model_item.production_date">
 				<source>Production Date</source>
+			</trans-unit>
+			<trans-unit id="tx_frpexample_domain_model_item.image">
+				<source>Image</source>
 			</trans-unit>
 			<trans-unit id="tx_frpexample_domain_model_item.groups">
 				<source>Groups</source>

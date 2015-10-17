@@ -6,16 +6,16 @@ if (!defined ('TYPO3_MODE')) {
 $GLOBALS['TCA']['tx_frpexample_domain_model_item'] = array(
 	'ctrl' => $GLOBALS['TCA']['tx_frpexample_domain_model_item']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, production_date, groups, user',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, production_date, image, groups, user',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, production_date, groups, user, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, production_date, image, groups, user, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
 	),
 	'columns' => array(
-	
+
 		'sys_language_uid' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
@@ -56,7 +56,7 @@ $GLOBALS['TCA']['tx_frpexample_domain_model_item'] = array(
 				'max' => 255,
 			)
 		),
-	
+
 		'hidden' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
@@ -117,6 +117,29 @@ $GLOBALS['TCA']['tx_frpexample_domain_model_item'] = array(
 				'default' => time()
 			),
 		),
+		'image' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:frp_example/Resources/Private/Language/locallang_db.xlf:tx_frpexample_domain_model_item.image',
+			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+				'image',
+				array(
+					'maxitems' => 1,
+					// 'foreign_selector_fieldTcaOverride' => array(
+					// 	'config' => array(
+					// 		'appearance' => array(
+					// 			'elementBrowserType' => 'image',
+					// 		),
+					// 	),
+					// ),
+					'foreign_types' => array(
+						'0' => array(
+							'showitem' => '',
+						),
+					),
+				),
+				$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+			),
+		),
 		'groups' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:frp_example/Resources/Private/Language/locallang_db.xlf:tx_frpexample_domain_model_item.groups',
@@ -137,6 +160,12 @@ $GLOBALS['TCA']['tx_frpexample_domain_model_item'] = array(
 				'maxitems' => 1,
 			),
 		),
-		
+
 	),
 );
+
+$GLOBALS['TCA']['tx_frpexample_domain_model_item']['columns']['image'] = $GLOBALS['TCA']['tt_content']['columns']['image'];
+
+// $logger = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')->getLogger('frp_example');
+// $logger->info(print_r($GLOBALS['TCA']['tx_frpexample_domain_model_item']['columns']['image'], TRUE));
+// $logger->info(print_r($GLOBALS['TCA']['tt_content']['columns']['image'], TRUE));

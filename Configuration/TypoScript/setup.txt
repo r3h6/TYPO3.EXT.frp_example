@@ -23,7 +23,7 @@ plugin.tx_frpexample {
 			ajaxPageType = {$plugin.tx_frpexample.settings.ajaxPageType}
 			list {
 				pagination {
-					itemsPerPage = 3
+					itemsPerPage = 10
 					insertAbove = 1
 					insertBelow = 0
 					maximumNumberOfLinks = 10
@@ -74,3 +74,14 @@ tx_frpexample_json {
 	}
 }
 
+page {
+	includeJSFooterlibs {
+		jquery = //code.jquery.com/jquery-1.11.3.min.js
+		jquery.external = 1
+		jqueryValidate = //ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js
+		jqueryValidate.external = 1
+	}
+	includeJSFooter {
+		frp_example_pi1 = EXT:frp_example/Resources/Public/JavaScripts/Pi1.js
+	}
+}

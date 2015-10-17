@@ -2,8 +2,7 @@
 namespace Frappant\FrpExample\Controller;
 
 use Frappant\FrpExample\Domain\Model\Dto\ItemDemand;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 /***************************************************************
  *
  *  Copyright notice
@@ -57,7 +56,7 @@ class ItemController extends ActionController {
 	 *
 	 * @return void
 	 */
-	public function initializeAction() {
+	protected function initializeAction() {
 		parent::initializeAction();
 		$this->data = $this->configurationManager->getContentObject()->data;
 		$this->isAjax = isset($this->setup['ajaxPageType']) && $this->setup['ajaxPageType'] === GeneralUtility::_GP('type');
@@ -69,13 +68,13 @@ class ItemController extends ActionController {
 	 * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view [description]
 	 * @return void
 	 */
-	public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view) {
+	protected function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view) {
 		$view->assign('layout', $this->isAjax ? 'Ajax' : 'Default');
 		$view->assign('setup', $this->setup);
 		$view->assign('data', $this->data);
 	}
 
-	public function initializeListAction() {
+	protected function initializeListAction() {
 		if (!$this->request->hasArgument(self::ARGUMENT_DEMAND)) {
 			/** @var \Frappant\FrpExample\Domain\Model\Dto\ItemDemand */
 			$itemDemand = ItemDemand::factory($this->setup->get('list.demand', array()));

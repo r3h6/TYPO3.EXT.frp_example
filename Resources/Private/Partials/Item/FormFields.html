@@ -1,10 +1,9 @@
-
-<label for="title">
-	<f:translate key="tx_frpexample_domain_model_item.title" />
-</label><br />
-	<f:form.textfield property="title" /><br />
-<label for="productionDate">
-	<f:translate key="tx_frpexample_domain_model_item.production_date" />
-</label><br />
-	<f:form.hidden property="productionDate.dateFormat" value="d.m.Y" />
-	<f:form.textfield property="productionDate.date" value="{item.productionDate->f:format.date()}" placeholder="dd.mm.yyyy" /><br />
+<div class="form-group">
+	<label for="title"><f:translate key="tx_frpexample_domain_model_item.title" /></label>
+	<f:form.textfield class="form-control required" property="title" />
+</div>
+<div class="form-group">
+	<label for="productionDate"><f:translate key="tx_frpexample_domain_model_item.production_date" /></label>
+	<f:form.textfield class="form-control required" property="productionDate.date"  value="{item.productionDate->f:format.date()}" type="date" />
+	<f:form.hidden property="productionDate.dateFormat" value="Y-m-d" />
+</div>

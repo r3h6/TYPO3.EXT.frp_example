@@ -54,6 +54,16 @@
                             "propertyName": "productionDate",
                             "propertyType": "DateTime",
                             "uid": "87891118634"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "image",
+                            "propertyType": "Image",
+                            "uid": "1426050662040"
                         }
                     ]
                 },
@@ -250,7 +260,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-08-10 09:51",
+        "last_modified": "2015-09-21 01:50",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

@@ -38,7 +38,7 @@ $GLOBALS['TCA']['tx_frpexample_domain_model_item'] = array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'title,production_date,groups,user,',
+		'searchFields' => 'title,production_date,image,groups,user,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Item.php',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_frpexample_domain_model_item.gif'
 	),
