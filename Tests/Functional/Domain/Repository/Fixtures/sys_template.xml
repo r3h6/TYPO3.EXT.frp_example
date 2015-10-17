@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<sys_template>
+		<uid>1</uid>
+		<pid>1</pid>
+		<title>Functional test: frp_example</title>
+		<constants>plugin.tx_frpexample.persistence.storagePid = 1</constants>
+		<include_static_file>EXT:frp_example/Configuration/TypoScript</include_static_file>
+		<root>1</root>
+		<clear>3</clear>
+	</sys_template>
+</dataset>

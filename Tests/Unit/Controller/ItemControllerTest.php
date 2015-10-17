@@ -4,7 +4,7 @@ namespace Frappant\FrpExample\Tests\Unit\Controller;
  *  Copyright notice
  *
  *  (c) 2015 !frappant Webfactory <support@frappant.ch>
- *  			
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -47,19 +47,27 @@ class ItemControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function listActionFetchesAllItemsFromRepositoryAndAssignsThemToView() {
+	public function listActionFetchesDemandedRecordsAndAssignThemToView() {
+		$itemDemand = $this->getMock('Frappant\\FrpExample\\Domain\\Model\\Dto\\ItemDemand', array(), array(), '', FALSE);
+		$items = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 
-		$allItems = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-
-		$itemRepository = $this->getMock('Frappant\\FrpExample\\Domain\\Repository\\ItemRepository', array('findAll'), array(), '', FALSE);
-		$itemRepository->expects($this->once())->method('findAll')->will($this->returnValue($allItems));
+		// Mock repository
+		$itemRepository = $this->getMock('Frappant\\FrpExample\\Domain\\Repository\\ItemRepository', array('findDemanded'), array(), '', FALSE);
+		$itemRepository->expects($this->once())->method('findDemanded')->will($this->returnValue($items));
 		$this->inject($this->subject, 'itemRepository', $itemRepository);
 
+		// Mock view
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
-		$view->expects($this->once())->method('assign')->with('items', $allItems);
+		$view
+			->expects($this->exactly(2))
+			->method('assign')
+			->withConsecutive(
+				array('items', $items),
+				array('itemDemand', $itemDemand)
+			);
 		$this->inject($this->subject, 'view', $view);
 
-		$this->subject->listAction();
+		$this->subject->listAction($itemDemand);
 	}
 
 	/**
@@ -97,6 +105,10 @@ class ItemControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$itemRepository = $this->getMock('Frappant\\FrpExample\\Domain\\Repository\\ItemRepository', array('add'), array(), '', FALSE);
 		$itemRepository->expects($this->once())->method('add')->with($item);
 		$this->inject($this->subject, 'itemRepository', $itemRepository);
+
+		$this->subject
+			->expects($this->once())
+			->method('addFlashMessage');
 
 		$this->subject->createAction($item);
 	}

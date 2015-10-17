@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<tx_frpexample_domain_model_item>
+		<uid>1</uid>
+		<pid>1</pid>
+		<title>Lorem</title>
+		<production_date>1445010000</production_date>
+	</tx_frpexample_domain_model_item>
+	<tx_frpexample_domain_model_item>
+		<uid>2</uid>
+		<pid>1</pid>
+		<title>Ipsum</title>
+		<production_date>1445030000</production_date>
+	</tx_frpexample_domain_model_item>
+	<tx_frpexample_domain_model_item>
+		<uid>3</uid>
+		<pid>1</pid>
+		<title>Dolores</title>
+		<production_date>1445020000</production_date>
+	</tx_frpexample_domain_model_item>
+</dataset>
