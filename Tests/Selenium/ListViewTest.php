@@ -8,20 +8,26 @@ use PHPUnit_Extensions_Selenium2TestCase_Keys AS Keys;
  * @link http://code.tutsplus.com/tutorials/how-to-use-selenium-2-with-phpunit--net-27577
  * @link https://github.com/giorgiosironi/phpunit-selenium/blob/master/Tests/Selenium2TestCaseTest.php
  */
-class ListViewTest extends \Tx_Phpunit_Selenium_TestCase  {
+// class ListViewTest extends \Tx_Phpunit_Selenium_TestCase  {
+class ListViewTest extends \PHPUnit_Extensions_Selenium2TestCase {
 
 	protected function setUp(){
 		parent::setUp();
-		$this->setBrowser($this->getSeleniumBrowser());
-		$this->setHost($this->getSeleniumHost());
-		$this->setPort($this->getSeleniumPort());
+		// $this->setBrowser($this->getSeleniumBrowser());
+		// $this->setHost($this->getSeleniumHost());
+		// $this->setPort($this->getSeleniumPort());
+		$this->setBrowser('chrome');
+		$this->setHost('192.168.33.10');
+		$this->setPort(4444);
+		$this->setBrowserUrl('http://typo3-6-2.lamp2/'); // Base url
 	}
 
 	/**
 	 * @test
 	 */
 	public function open(){
-		$url = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['frp_example']['seleniumUrl'];
+		// $url = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['frp_example']['seleniumUrl'];
+		$url = 'frp-example/';
 		$this->url($url);
 		$this->assertStringEndsWith($url, $this->url());
 	}
@@ -32,7 +38,8 @@ class ListViewTest extends \Tx_Phpunit_Selenium_TestCase  {
 	 */
 	public function checkSearchFormAndSubmitOneSearchRequest (){
 		// Open site.
-		$this->url($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['frp_example']['seleniumUrl']);
+		// $this->url($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['frp_example']['seleniumUrl']);
+		$this->url('frp-example/');
 
 		// Get search form.
 		$form = $this->byName('itemDemand');
@@ -57,7 +64,8 @@ class ListViewTest extends \Tx_Phpunit_Selenium_TestCase  {
 	 */
 	public function createNewItem (){
 		// Open site.
-		$this->url($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['frp_example']['seleniumUrl']);
+		// $this->url($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['frp_example']['seleniumUrl']);
+		$this->url('frp-example/');
 
 		// Click link for creating new element.
 		$newLink = $this->byLinkText('New Item');
@@ -80,8 +88,11 @@ class ListViewTest extends \Tx_Phpunit_Selenium_TestCase  {
 		$this->keys(Keys::TAB);
 
 		// Fill date field.
-		$dateInput = $this->byCssSelector(':focus');
-		$dateInput->value(date('Y-m-d'));
+		// $dateInput = $this->byCssSelector(':focus');
+		// $dateInput->value(date('Y-m-d'));
+		foreach (array(1, 1, 2, 2, 2, 0, 1, 5) as $key){
+			$this->keys($key);
+		}
 		$this->assertFalse($form->byId('tx_frpexample_pi1[newItem][productionDate][date]-error')->displayed());
 
 		// Submit form.

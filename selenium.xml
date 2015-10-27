@@ -14,8 +14,8 @@
 	verbose="false"
 >
 	<testsuites>
-		<testsuite name="Unit tests">
-			<directory>./Tests/Unit/</directory>
+		<testsuite name="Selenium tests">
+			<directory>./Tests/Selenium/</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
